@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+
+android {
+    /** 为了能够支持该库中的包 */
+    useLibrary 'org.apache.http.legacy'
+
+    compileSdkVersion 30
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 100
+        versionName "1.0.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false     //true:开启混淆;false关闭混淆(只要主模块开启了混淆，此处开不开都不影响，都是会被主模块的开启规则所影响的)
+            shrinkResources false   //true:打开移出无用资源;false:关闭移出无用资源
+            zipAlignEnabled false   //true:打开压缩优化;false:关闭压缩优化
+            ext.enableCrashlytics = false // 禁用生成Crashlytics报告的插件
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    /*productFlavors {
+        dev {
+            // 为dev的productFlavors指定一个语言资源和屏幕密度
+            resConfigs "zh", "xxhdpi"
+        }
+        prod {
+
+        }
+    }*/
+}
+
+dependencies {
+    // Android扩展包依赖
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    // fastjson依赖[ali]
+    api 'com.alibaba:fastjson:1.2.76'
+
+    // rxjava依赖
+    /*api('io.reactivex.rxjava2:rxjava:2.2.19')*/
+    api('io.reactivex.rxjava2:rxandroid:2.1.1')
+
+    // retrofit依赖[squareup]
+    api('com.squareup.retrofit2:retrofit:2.9.0')
+    api('com.squareup.retrofit2:adapter-rxjava2:2.9.0')
+    api('com.squareup.retrofit2:converter-scalars:2.9.0')
+    /*implementation 'com.squareup.retrofit2:converter-gson:2.9.0'*/
+    /*implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'*/
+
+    // SFTP上传下载依赖：https://mvnrepository.com/artifact/com.jcraft/jsch
+    implementation 'com.jcraft:jsch:0.1.55'
+    // Apache http依赖：https://mvnrepository.com/artifact/commons-net/commons-net
+    implementation 'commons-net:commons-net:3.8.0'
+    // WebService请求依赖：https://mvnrepository.com/artifact/com.haotek.ksoap2/ksoap2-android-assembly
+    implementation 'com.haotek.ksoap2:ksoap2-android-assembly:3.3.0'
+}

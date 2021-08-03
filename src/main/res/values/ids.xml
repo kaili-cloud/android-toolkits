@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Button IDS -->
+    <item name="btn_back" type="id"></item>
+    <item name="btn_cancel" type="id"></item>
+    <item name="btn_confirm" type="id"></item>
+    <item name="btn_input" type="id"></item>
+    <item name="btn_reset" type="id"></item>
+    <item name="btn_scan" type="id"></item>
+
+    <!-- TextView IDS -->
+    <item name="tv_back" type="id"></item>
+    <item name="tv_title" type="id"></item>
+</resources>
